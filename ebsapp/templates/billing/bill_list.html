@@ -1,0 +1,47 @@
+{% extends 'billing/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>View All Bills</h2>
+    <hr>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Bill ID</th>
+                    <th>Consumer ID</th>
+                    <th>Month</th>
+                    <th>Total Units</th>
+                    <th>Amount</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in bills %}
+                <tr>
+                    <td>{{ bill.id }}</td>
+                    <td>{{ bill.consumer_id }}</td>
+                    <td>{{ bill.month }} {{ bill.year }}</td>
+                    <td>{{ bill.total_units }}</td>
+                    <td>${{ bill.calculate_total }}</td>
+                    <td>{{ bill.due_date }}</td>
+                    <td>
+                        {% if bill.is_paid %}
+                        <span class="badge bg-success">Paid</span>
+                        {% else %}
+                        <span class="badge bg-danger">Unpaid</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'payment' bill.id %}" class="btn btn-sm btn-primary">Pay</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'billing/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add New Connection</h2>
+    <hr>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">10 Digit Connection ID</label>
+                {{ form.connection_id }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Customer Name</label>
+                {{ form.customer }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Connection Type</label>
+                {{ form.connection_type }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Connection Start Date</label>
+                {{ form.start_date }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Occupation</label>
+                {{ form.occupation }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Load</label>
+                {{ form.load }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Plot No.</label>
+                {{ form.plot_no }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">City</label>
+                {{ form.city }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Pincode</label>
+                {{ form.pincode }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">State</label>
+                {{ form.state }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

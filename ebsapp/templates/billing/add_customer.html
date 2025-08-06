@@ -1,0 +1,52 @@
+{% extends 'billing/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add New Customer</h2>
+    <hr>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <br>{{ form.first_name }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <br>{{ form.last_name }}
+            </div>
+            <div class="mb-3">
+            <label class="form-label">Contact</label>
+           <br> {{ form.contact }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email Id</label>
+            <br>{{ form.email }}
+        </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+           <br> {{ form.address }}
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">City</label>
+                <br>{{ form.city }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">State</label>
+                <br>{{ form.state }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

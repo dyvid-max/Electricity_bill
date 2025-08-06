@@ -1,0 +1,38 @@
+{% extends 'billing/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Payment Details</h2>
+    <hr>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="card_number" class="form-label">CARD NUMBER</label>
+                    {{ form.card_number }}
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="expiry_date" class="form-label">EXPIRATION DATE</label>
+                        {{ form.expiry_date }}
+                    </div>
+                    <div class="col">
+                        <label for="cvc" class="form-label">CVC CODE</label>
+                        {{ form.cvc }}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Amount in $</label>
+                    <input type="text" class="form-control" value="{{ amount }}" readonly>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Payment</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

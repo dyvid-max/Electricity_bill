@@ -1,0 +1,47 @@
+{% extends 'billing/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>View All Connections</h2>
+    <hr>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Conn. ID</th>
+                    <th>Customer</th>
+                    <th>Type</th>
+                    <th>Start Date</th>
+                    <th>Occupation</th>
+                    <th>Load</th>
+                    <th>Plot No.</th>
+                    <th>City</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for connection in connections %}
+                <tr>
+                    <td>{{ connection.connection_id }}</td>
+                    <td>{{ connection.customer }}</td>
+                    <td>{{ connection.get_connection_type_display }}</td>
+                    <td>{{ connection.start_date }}</td>
+                    <td>{{ connection.occupation }}</td>
+                    <td>{{ connection.load }}</td>
+                    <td>{{ connection.plot_no }}</td>
+                    <td>{{ connection.city }}</td>
+                    <td>
+                        {% if connection.is_active %}
+                        <span class="badge bg-success">Active</span>
+                        {% else %}
+                        <span class="badge bg-danger">Inactive</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

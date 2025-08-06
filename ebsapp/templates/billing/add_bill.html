@@ -1,0 +1,57 @@
+{% extends 'billing/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add New Bill</h2>
+    <hr>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="consumer_id" class="form-label">Consumer ID</label>
+                {{ form.consumer_id }}
+            </div>
+            <div class="col-md-6">
+                <label for="month" class="form-label">Bill For Month</label>
+                {{ form.month }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="current_reading" class="form-label">Current Reading</label>
+                {{ form.current_reading }}
+            </div>
+            <div class="col-md-6">
+                <label for="previous_reading" class="form-label">Previous Reading</label>
+                {{ form.previous_reading }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="total_units" class="form-label">Total Unit</label>
+                {{ form.total_units }}
+            </div>
+            <div class="col-md-6">
+                <label for="charge_per_unit" class="form-label">Charge Per Unit</label>
+                {{ form.charge_per_unit }}
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="due_date" class="form-label">Due Date</label>
+                {{ form.due_date }}
+            </div>
+            <div class="col-md-6">
+                <label for="connection" class="form-label">Connection</label>
+                {{ form.connection }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
